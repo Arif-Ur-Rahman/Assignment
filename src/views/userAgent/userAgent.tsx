@@ -1,6 +1,7 @@
+// src/views/userAgent/userAgent.tsx
 import React from "react";
 import { GetServerSideProps } from "next";
-import { BackToHome } from "@/components/backToHome/backToHome"; // Adjust the import path if needed
+import { BackToHome } from "../../components/backToHome/backToHome";
 
 interface UserAgentProps {
   userAgent: string | null;
@@ -18,11 +19,9 @@ const UserAgent: React.FC<UserAgentProps> = ({ userAgent }) => {
   );
 };
 
-// Define the server-side function with TypeScript
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userAgent = context.req.headers["user-agent"] || null;
-
-  console.log("User Agent from headers:", userAgent); // Log the user agent for debugging
+  console.log("User Agent from headers:", userAgent);
 
   return {
     props: {
@@ -31,4 +30,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default UserAgent;
+export default UserAgent; // Default export
